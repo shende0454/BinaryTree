@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeLib", "TreeLib\TreeLib.csproj", "{8D1660AF-2027-4879-8285-59F12DD4A931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TreeLibTests", "TreeLibTests\TreeLibTests.csproj", "{5AA2B978-291E-4F87-8664-1C7C1A039136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2", "lab2\Lab2.csproj", "{737C6F41-7507-42B3-A90B-BC9CFFEFA7C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8D1660AF-2027-4879-8285-59F12DD4A931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1660AF-2027-4879-8285-59F12DD4A931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1660AF-2027-4879-8285-59F12DD4A931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1660AF-2027-4879-8285-59F12DD4A931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AA2B978-291E-4F87-8664-1C7C1A039136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AA2B978-291E-4F87-8664-1C7C1A039136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AA2B978-291E-4F87-8664-1C7C1A039136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AA2B978-291E-4F87-8664-1C7C1A039136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737C6F41-7507-42B3-A90B-BC9CFFEFA7C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737C6F41-7507-42B3-A90B-BC9CFFEFA7C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737C6F41-7507-42B3-A90B-BC9CFFEFA7C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737C6F41-7507-42B3-A90B-BC9CFFEFA7C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E90A3F23-4101-4DD6-8B89-9ABF29A15631}
+	EndGlobalSection
+EndGlobal
