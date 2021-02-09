@@ -21,31 +21,76 @@ namespace TreeLib
             Payload = payload;
         }
 
-        //public static int Height(INode<KeyType, ValueType> root)
-        //{
-        //}
+        public static int Height(INode<KeyType, ValueType> root)
+        {
+            if (root == null)
+                return -1;
+            return 1 + Math.Max(Height(root.LeftChild), Height(root.RightChild));
+        }
 
-        //public static void PreOrderTraversal(INode<KeyType, ValueType> root,
-        //    ITraverse<KeyType, ValueType> traverser)
-        //{
-        // }
+        public static void PreOrderTraversal(INode<KeyType, ValueType> root,
+            ITraverse<KeyType, ValueType> traverser)
+        {
+            if (root != null)
+            {
+                traverser.ProcessNode(root.Key, root.Payload);
+                Console.Write(root.LeftChild);
+                if (root.LeftChild != null)
+                {
+                    PostOrderTraversal(root.LeftChild, traverser);
+                }
+                if (root.RightChild != null)
+                {
+                    PostOrderTraversal(root.RightChild, traverser);
+                }
+                
+            }
+        }
 
-        //public static void ToString(INode<KeyType, ValueType> root, StringBuilder builder)
-        //{
-        //}
+        public static void ToString(INode<KeyType, ValueType> root, StringBuilder builder)
+        {
+            builder.Append("()");
+            if (root != null)
+            {
+                builder.Insert(1,"g");
+            }
+            
+            
+        }
 
-        //public static void PostOrderTraversal(INode<KeyType, ValueType> root,
-        //   ITraverse<KeyType, ValueType> traverser)
-        //{
-        //}
+        public static void PostOrderTraversal(INode<KeyType, ValueType> root,
+           ITraverse<KeyType, ValueType> traverser)
+        {
+            if(root != null)
+            {
+                if (root.LeftChild != null)
+                {
+                    PostOrderTraversal(root.LeftChild, traverser);
+                }
+                if (root.RightChild != null)
+                {
+                    PostOrderTraversal(root.RightChild, traverser);
+                }
+                traverser.ProcessNode(root.Key, root.Payload);
+                Console.Write(root.LeftChild);
+            }
+        }
 
-        //public static INode<KeyType, ValueType>RotateLeft(INode<KeyType, ValueType> root)
-        //{
-        //}
+        public static INode<KeyType, ValueType> RotateLeft(INode<KeyType, ValueType> root)
+        {
+            INode<KeyType,ValueType> temp = root.LeftChild;
+            root.LeftChild = temp.RightChild;
+            temp.RightChild = root;
+            return temp;
+        }
 
-        //public static INode<KeyType, ValueType> RotateRight(INode<KeyType, ValueType> root)
-        //{
-        //}
+        public static INode<KeyType, ValueType> RotateRight(INode<KeyType, ValueType> root)
+        {
+            INode<KeyType, ValueType> temp = root.RightChild;
+            root.RightChild = temp.LeftChild;
+            temp.LeftChild = root;
+            return temp;
+        }
 
         //public static INode<KeyType, ValueType> 
         //    InsertAtRoot(INode<KeyType, ValueType> root, KeyType key, ValueType value)
@@ -53,10 +98,28 @@ namespace TreeLib
         //}
 
 
-        //public static void InOrderTraversal(INode<KeyType, ValueType> root,
-        //    ITraverse<KeyType, ValueType> traverser)
-        //{
-        //}
+        public static void InOrderTraversal(INode<KeyType, ValueType> root,
+            ITraverse<KeyType, ValueType> traverser)
+        {
+            //Ask Dr Ribler about the use of traverser, if we should process node on the recursive call
+            //The FindMaxTraverser constructor. And if we should
+            //Anti base case
+            //if(root != null)
+                
+            if (root.LeftChild != null)
+            {
+                InOrderTraversal(root.LeftChild, traverser);
+            }
+            //Process Node
+            traverser.ProcessNode(root.Key, root.Payload);
+            //Line to print below
+             //Console.Write(root.Key.ToString());
+            if (root.RightChild != null)
+            {
+                InOrderTraversal(root.RightChild, traverser);
+            }
+            
+        }
 
         // Insert assumes that we already have a root node that we
         // are going to add a new node to.

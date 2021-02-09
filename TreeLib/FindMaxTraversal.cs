@@ -27,6 +27,16 @@ namespace TreeLib
         //     Adds the key to the KeyList
         public void ProcessNode(KeyType key, ValueType payload)
         {
+            
+            if (key.CompareTo(MaxKey) == 1)
+            {
+                MaxKey = key;
+            }
+            if (payload.CompareTo(MaxPayload) == 1)
+            {
+                MaxPayload = payload;
+            }
+            KeyList.Add(key);
         }
     }
 }

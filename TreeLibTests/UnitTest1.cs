@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Text;
 using TreeLib;
-
+// null tree empty has height of -1
 namespace TreeLibTests
 {
     [TestClass]
@@ -141,9 +141,9 @@ namespace TreeLibTests
 
 
 
-        //// Print trees with the following grammar:
-        //// "(" <root> <leftTree> <rightTree> ")"
-        //// where <leftTree> and <rightTree> are not printed if they are both null.
+        // Print trees with the following grammar:
+        // "(" <root> <leftTree> <rightTree> ")"
+        // where <leftTree> and <rightTree> are not printed if they are both null.
         //[TestMethod]
         //public void T010_printNullTree()
         //{
@@ -177,7 +177,7 @@ namespace TreeLibTests
         //public void T013_printSearch()
         //{
         //    BinaryTree<string, int> tree = new BinaryTree<string, int>();
-            
+
         //    tree.Insert("s", 10);
         //    Assert.AreEqual("(s)", tree.ToString());
         //    tree.Insert("e", 11);
