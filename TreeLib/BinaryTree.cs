@@ -52,22 +52,25 @@ namespace TreeLib
         {
             StringBuilder sb = new StringBuilder();
             //create string builder
+            sb.Append("(");
             Node<KeyType, ValueType>.ToString(Root, sb);
+            sb.Append(")");
             return sb.ToString();
         }
 
         public void RotateLeft()
         {
-            Node<KeyType, ValueType>.RotateLeft(Root);
+           Root =  Node<KeyType, ValueType>.RotateLeft(Root);
         }
 
-        //public void InsertAtRoot(KeyType key, ValueType payload)
-        //{
-        //}
+        public void InsertAtRoot(KeyType key, ValueType payload)
+        {
+            Root = Node<KeyType, ValueType>.InsertAtRoot(Root,key,payload);
+        }
 
         public void RotateRight()
         {
-            Node<KeyType, ValueType>.RotateRight(Root);
+           Root =  Node<KeyType, ValueType>.RotateRight(Root);
         }
     }
 }

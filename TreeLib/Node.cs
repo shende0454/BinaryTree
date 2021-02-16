@@ -15,17 +15,25 @@ namespace TreeLib
         public INode<KeyType, ValueType> LeftChild { get; set; }
         public INode<KeyType, ValueType> RightChild { get; set; }
 
-        public Node(KeyType key, ValueType payload)
+        //isRed is implemented as a default (optional) parameter
+        public Node(KeyType key, ValueType payload, bool isRed = false)
         {
             Key = key;
             Payload = payload;
+            RightChild = null;
+            LeftChild = null;
+            isRed = true;
         }
 
         public static int Height(INode<KeyType, ValueType> root)
         {
-            if (root == null)
-                return -1;
-            return 1 + Math.Max(Height(root.LeftChild), Height(root.RightChild));
+            int height = -1;
+            if (root != null)
+            {
+                height = 1 + Math.Max(Node<KeyType, ValueType>.Height(root.LeftChild), Node<KeyType, ValueType>.Height(root.RightChild));
+            }
+                //Return Height of the tree
+            return height;
         }
 
         public static void PreOrderTraversal(INode<KeyType, ValueType> root,
@@ -33,8 +41,7 @@ namespace TreeLib
         {
             if (root != null)
             {
-                traverser.ProcessNode(root.Key, root.Payload);
-                Console.Write(root.LeftChild);
+                traverser.ProcessNode(root.Key, root.Payload);//Process Node
                 if (root.LeftChild != null)
                 {
                     PostOrderTraversal(root.LeftChild, traverser);
@@ -49,13 +56,23 @@ namespace TreeLib
 
         public static void ToString(INode<KeyType, ValueType> root, StringBuilder builder)
         {
-            builder.Append("()");
             if (root != null)
-            {
-                builder.Insert(1,"g");
+            {   
+                builder.Append(root.Key.ToString()); //Append
+                if (root.LeftChild != null || root.RightChild != null)
+                {
+
+                    builder.Append(" (");
+                    ToString(root.LeftChild, builder);
+                    builder.Append(") (");
+                    ToString(root.RightChild, builder);
+                    builder.Append(")");
+                }   
             }
-            
-            
+            if (builder.Length == 0)
+            {
+                builder.Append("()");
+            }
         }
 
         public static void PostOrderTraversal(INode<KeyType, ValueType> root,
@@ -72,48 +89,65 @@ namespace TreeLib
                     PostOrderTraversal(root.RightChild, traverser);
                 }
                 traverser.ProcessNode(root.Key, root.Payload);
-                Console.Write(root.LeftChild);
+              
             }
         }
 
         public static INode<KeyType, ValueType> RotateLeft(INode<KeyType, ValueType> root)
         {
-            INode<KeyType,ValueType> temp = root.LeftChild;
-            root.LeftChild = temp.RightChild;
-            temp.RightChild = root;
-            return temp;
+            INode<KeyType,ValueType> newRoot = root.RightChild;
+            INode<KeyType, ValueType> newNode = root.RightChild.LeftChild; 
+            newRoot.LeftChild = root; // update new root
+            root.RightChild = newNode;
+            return newRoot;
         }
 
         public static INode<KeyType, ValueType> RotateRight(INode<KeyType, ValueType> root)
         {
-            INode<KeyType, ValueType> temp = root.RightChild;
-            root.RightChild = temp.LeftChild;
-            temp.LeftChild = root;
-            return temp;
+            INode<KeyType, ValueType> theRoot = root.LeftChild;
+            INode<KeyType, ValueType> updNode = root.LeftChild.RightChild;
+            theRoot.RightChild = root; // update new root 
+            root.LeftChild = updNode;
+            return theRoot;
         }
 
-        //public static INode<KeyType, ValueType> 
-        //    InsertAtRoot(INode<KeyType, ValueType> root, KeyType key, ValueType value)
-        //{
-        //}
+        public static INode<KeyType, ValueType>
+            InsertAtRoot(INode<KeyType, ValueType> root, KeyType key, ValueType value)
+        {
+
+            if (root != null)
+            { 
+                int comparison = key.CompareTo(root.Key); // Comparing keys
+                if (comparison < 0)
+                {
+                    root.LeftChild = InsertAtRoot(root.LeftChild, key, value);
+                    root = RotateRight(root);//rotateR
+                }
+                else
+                {
+                    root.RightChild = InsertAtRoot(root.RightChild, key, value);
+                    root = RotateLeft(root);//RotateL
+                }
+            }
+            else
+            {
+                root = new Node<KeyType, ValueType>(key, value);
+            }
+            return root;
+        }
 
 
         public static void InOrderTraversal(INode<KeyType, ValueType> root,
             ITraverse<KeyType, ValueType> traverser)
         {
-            //Ask Dr Ribler about the use of traverser, if we should process node on the recursive call
-            //The FindMaxTraverser constructor. And if we should
-            //Anti base case
-            //if(root != null)
-                
+          
             if (root.LeftChild != null)
             {
                 InOrderTraversal(root.LeftChild, traverser);
             }
             //Process Node
             traverser.ProcessNode(root.Key, root.Payload);
-            //Line to print below
-             //Console.Write(root.Key.ToString());
+            
             if (root.RightChild != null)
             {
                 InOrderTraversal(root.RightChild, traverser);

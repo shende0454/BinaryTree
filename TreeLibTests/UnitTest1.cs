@@ -141,9 +141,9 @@ namespace TreeLibTests
 
 
 
-        // Print trees with the following grammar:
+        //Print trees with the following grammar:
         // "(" <root> <leftTree> <rightTree> ")"
-        // where <leftTree> and <rightTree> are not printed if they are both null.
+        // where<leftTree> and<rightTree> are not printed if they are both null.
         //[TestMethod]
         //public void T010_printNullTree()
         //{
@@ -254,24 +254,24 @@ namespace TreeLibTests
         //    Assert.AreEqual("(f (c) (m (j) (t (q) (w))))", tree.ToString());
         //}
 
-        //[TestMethod]
-        //public void T018_insertAtRoot()
-        //{
-        //    BinaryTree<string, int> tree = new BinaryTree<string, int>();
+        [TestMethod]
+        public void T018_insertAtRoot()
+        {
+            BinaryTree<string, int> tree = new BinaryTree<string, int>();
 
-        //    tree.InsertAtRoot("s", 10);
-        //    Assert.AreEqual("(s)", tree.ToString());
-        //    tree.InsertAtRoot("e", 11);
-        //    Assert.AreEqual("(e () (s))", tree.ToString());
-        //    tree.InsertAtRoot("a", 12);
-        //    Assert.AreEqual("(a () (e () (s)))", tree.ToString());
-        //    tree.InsertAtRoot("r", 13);
-        //    Assert.AreEqual("(r (a () (e)) (s))", tree.ToString());
-        //    tree.InsertAtRoot("c", 14);
-        //    Assert.AreEqual("(c (a) (r (e) (s)))", tree.ToString());
-        //    tree.InsertAtRoot("h", 15);
-        //    Assert.AreEqual("(h (c (a) (e)) (r () (s)))", tree.ToString());
-        //}
+            tree.InsertAtRoot("s", 10);
+            Assert.AreEqual("(s)", tree.ToString());
+            tree.InsertAtRoot("e", 11);
+            Assert.AreEqual("(e () (s))", tree.ToString());
+            tree.InsertAtRoot("a", 12);
+            Assert.AreEqual("(a () (e () (s)))", tree.ToString());
+            tree.InsertAtRoot("r", 13);
+            Assert.AreEqual("(r (a () (e)) (s))", tree.ToString());
+            tree.InsertAtRoot("c", 14);
+            Assert.AreEqual("(c (a) (r (e) (s)))", tree.ToString());
+            tree.InsertAtRoot("h", 15);
+            Assert.AreEqual("(h (c (a) (e)) (r () (s)))", tree.ToString());
+        }
 
         //// Extra Credit
         //[TestMethod]
